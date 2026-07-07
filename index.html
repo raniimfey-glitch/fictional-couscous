@@ -2,862 +2,954 @@
 <!--
 ================================================================
   Project Name : التعليم الممتع | Fun Learning
-  Version      : CMS 2.2 — Dark Mode + New Subjects
+  Version      : منصة تعليمية تفاعلية
   Developer    : Samira Abdessadok "رنيم فاي" | سميرة عبد الصّدوق
   Date         : جويلية 2026
+
   Copyright (c) 2026 Samira Abdessadok "رنيم فاي". All Rights Reserved.
-  ACKNOWLEDGMENT: Developed with AI as assistive tool only.
+  جميع الحقوق محفوظة © 2026 سميرة عبد الصّدوق "رنيم فاي".
+
+  NOTICE: This software is the exclusive intellectual property of
+  Samira Abdessadok "رنيم فاي". Unauthorized reproduction, distribution,
+  modification, or use of this code, in whole or in part, is strictly
+  prohibited without prior written consent from the owner.
+
+  تنبيه: هذا البرنامج هو ملكية فكرية حصرية لسميرة عبد الصّدوق "رنيم فاي".
+  يمنع منعاً باتاً نسخ أو توزيع أو تعديل أو استخدام هذا الكود،
+  كلياً أو جزئياً، دون الحصول على إذن خطي مسبق من صاحبة الحقوق.
+
+  ACKNOWLEDGMENT: Developed and designed by Samira Abdessadok (Raniim Fey),
+  utilizing Artificial Intelligence tools as an assistive technology in
+  coding and data structuring, while retaining full intellectual property
+  rights and editorial oversight.
+  إقرار: تمّ التّطوير والتّصميم بواسطة سميرة عبد الصّدوق (رنيم فاي)،
+  مع الاستعانة بأدوات الذّكاء الاصطناعي كتقنية مساعدة في البرمجة
+  وهيكلة البيانات، مع الاحتفاظ الكامل بكافة حقوق الملكيّة الفكريّة
+  والإشراف التّحريري.
 ================================================================
 -->
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Samira Abdessadok / رنيم فاي">
-<title>رنيم فاي | التعلم الممتع</title>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Samira Abdessadok / رنيم فاي">
+    <meta name="description" content="مكتبة التطبيقات التعليمية التفاعلية — سميرة عبد الصّدوق / رنيم فاي">
+    <title>رنيم فاي | التعلم الممتع</title>
 
-/* ===== LIGHT THEME ===== */
-:root{
-  --ink:#1e2235; --ink-soft:#5a6080;
-  --paper:#f4f7f4; --surface:#ffffff;
-  --gold:#e07b2a; --gold-pale:#fef0e4;
-  --teal:#1e9e72; --teal-pale:#e4f7f0; --teal-dark:#157a57;
-  --border:#dde8e4; --radius:14px;
-  --shadow:0 4px 24px rgba(30,158,114,0.15);
-  --shadow-hover:0 8px 32px rgba(30,158,114,0.22);
-  --shadow-lg:0 8px 40px rgba(0,0,0,0.18);
-  --grad-arabic:  linear-gradient(135deg,#eef6f5,#d4ede8);
-  --grad-math:    linear-gradient(135deg,#f0eeff,#ddd8f8);
-  --grad-games:   linear-gradient(135deg,#fff0fb,#f5d8f0);
-  --grad-tools:   linear-gradient(135deg,#f0f5ff,#d8e4f8);
-  --grad-islamic: linear-gradient(135deg,#f0fff4,#c9f0d8);
-  --grad-science: linear-gradient(135deg,#e8f4ff,#c5ddf5);
-  --grad-civic:   linear-gradient(135deg,#fffbe8,#f5e8b0);
-  --grad-history: linear-gradient(135deg,#fff2e8,#f5d0b0);
-  --grad-geo:     linear-gradient(135deg,#eeffee,#c8f0c8);
-}
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ===== DARK THEME ===== */
-[data-theme="dark"]{
-  --ink:#e8eaf2; --ink-soft:#9099bb;
-  --paper:#12141f; --surface:#1c1f2e;
-  --gold:#f0943a; --gold-pale:#3a2810;
-  --teal:#25c48e; --teal-pale:#0d2e22; --teal-dark:#1da870;
-  --border:#2c3050;
-  --shadow:0 4px 24px rgba(0,0,0,0.4);
-  --shadow-hover:0 8px 32px rgba(0,0,0,0.5);
-  --shadow-lg:0 8px 40px rgba(0,0,0,0.6);
-  --grad-arabic:  linear-gradient(135deg,#1a2e2b,#0e201d);
-  --grad-math:    linear-gradient(135deg,#1e1a38,#16122a);
-  --grad-games:   linear-gradient(135deg,#2a1a28,#1e1020);
-  --grad-tools:   linear-gradient(135deg,#1a1e38,#10142a);
-  --grad-islamic: linear-gradient(135deg,#0e2a1a,#071a10);
-  --grad-science: linear-gradient(135deg,#0e1e2e,#07121e);
-  --grad-civic:   linear-gradient(135deg,#26220a,#1a1607);
-  --grad-history: linear-gradient(135deg,#281a0a,#1c1007);
-  --grad-geo:     linear-gradient(135deg,#0e260e,#071807);
-}
+        :root {
+            --ink:       #1e2235;
+            --ink-soft:  #5a6080;
+            --paper:     #f4f7f4;
+            --surface:   #ffffff;
+            --gold:      #e07b2a;
+            --gold-pale: #fef0e4;
+            --teal:      #1e9e72;
+            --teal-pale: #e4f7f0;
+            --border:    #dde8e4;
+            --radius:    14px;
+            --shadow:    0 2px 16px rgba(30,158,114,0.10);
+        }
 
-html{scroll-behavior:smooth}
-body{
-  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
-  background:var(--paper);color:var(--ink);min-height:100vh;
-  transition:background 0.3s,color 0.3s;
-}
+        html { scroll-behavior: smooth; }
 
-/* ===== KEYFRAMES ===== */
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes scaleIn{from{opacity:0;transform:scale(0.94)}to{opacity:1;transform:scale(1)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){
-  .card,.hero-eyebrow,.hero h1,.hero p{animation:none!important;opacity:1!important;transform:none!important}
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+        }
 
-/* ===== HEADER ===== */
-header{
-  background:var(--surface);border-bottom:1px solid var(--border);
-  padding:15px 24px;display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:200;transition:background 0.3s,border-color 0.3s;
-}
-.logo{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
-.logo-mark{
-  width:38px;height:38px;background:linear-gradient(135deg,var(--teal),#3a9e8c);
-  border-radius:10px;display:flex;align-items:center;justify-content:center;
-  font-size:18px;color:white;transition:transform 0.2s;
-}
-.logo:active .logo-mark{transform:scale(0.88)}
-.logo-text{display:flex;flex-direction:column;line-height:1.2}
-.logo-ar{font-size:0.97rem;font-weight:700;color:var(--ink)}
-.logo-sub{font-size:0.7rem;color:var(--ink-soft)}
+        /* ===== HEADER ===== */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-/* dark mode toggle */
-.dark-toggle{
-  background:var(--paper);border:1.5px solid var(--border);
-  border-radius:50px;padding:6px 12px;cursor:pointer;
-  font-size:0.82rem;color:var(--ink-soft);font-family:inherit;
-  display:flex;align-items:center;gap:6px;transition:all 0.25s;
-  white-space:nowrap;
-}
-.dark-toggle:hover{border-color:var(--teal);color:var(--teal)}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-/* ===== STICKY FILTERS ===== */
-.sticky-controls{
-  position:sticky;top:69px;z-index:150;
-  background:var(--paper);border-bottom:1px solid var(--border);
-  padding:10px 20px;transition:box-shadow 0.25s,background 0.3s;
-}
-.sticky-controls.scrolled{box-shadow:0 3px 14px rgba(0,0,0,0.09)}
-.search-wrap{position:relative;max-width:500px;margin:0 auto 10px}
-.search-icon{position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--ink-soft);pointer-events:none;font-size:0.9rem}
-#searchBar{
-  width:100%;padding:9px 38px 9px 14px;border:1.5px solid var(--border);border-radius:50px;
-  background:var(--surface);font-family:inherit;font-size:0.88rem;color:var(--ink);
-  outline:none;transition:border-color 0.2s,box-shadow 0.2s,background 0.3s;text-align:right;
-}
-#searchBar:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(30,158,114,0.1)}
-.filters{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-.filter-btn{
-  padding:5px 13px;border:1.5px solid var(--border);border-radius:50px;
-  background:var(--surface);font-family:inherit;font-size:0.8rem;font-weight:500;
-  color:var(--ink-soft);cursor:pointer;transition:all 0.2s;
-}
-.filter-btn:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-1px)}
-.filter-btn.active{background:var(--teal);border-color:var(--teal);color:white;box-shadow:0 2px 8px rgba(30,158,114,0.3)}
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--teal), #3a9e8c);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
 
-/* ===== HERO ===== */
-.hero{padding:40px 24px 28px;max-width:760px;margin:0 auto;text-align:center}
-.hero-eyebrow{
-  display:inline-block;font-size:0.78rem;font-weight:500;
-  color:var(--teal);background:var(--teal-pale);
-  padding:3px 12px;border-radius:20px;margin-bottom:14px;
-  animation:fadeUp 0.5s ease both;
-}
-.hero h1{font-size:clamp(1.5rem,4.5vw,2.4rem);font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:12px;animation:fadeUp 0.5s 0.08s ease both}
-.hero h1 span{color:var(--gold)}
-.hero p{font-size:0.95rem;font-weight:300;color:var(--ink-soft);line-height:1.8;max-width:540px;margin:0 auto;animation:fadeUp 0.5s 0.16s ease both}
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
 
-/* ===== GRID ===== */
-.grid-wrap{padding:20px 20px 60px;max-width:960px;margin:0 auto}
-.section-label{
-  font-size:0.75rem;font-weight:500;color:var(--ink-soft);
-  letter-spacing:0.06em;text-transform:uppercase;
-  margin-bottom:16px;padding-bottom:9px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.apps-count{font-size:0.73rem;color:var(--teal);background:var(--teal-pale);padding:2px 10px;border-radius:20px;letter-spacing:0;text-transform:none}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px}
+        .logo-ar {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
 
-/* ===== CARD ===== */
-.card{
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--radius);padding:18px;
-  display:flex;flex-direction:column;gap:9px;
-  position:relative;cursor:pointer;
-  opacity:0;animation:fadeUp 0.42s ease both;
-  transition:box-shadow 0.28s,transform 0.28s,border-color 0.28s,background 0.28s,opacity 0.3s;
-  will-change:transform,box-shadow;
-}
-.card:hover{transform:translateY(-4px) scale(1.014);box-shadow:var(--shadow-hover);border-color:transparent}
-.card:active{transform:scale(0.985);box-shadow:var(--shadow)}
-.card.done{border-color:#b8e0cf;background:var(--teal-pale)}
-.card.done .card-title{text-decoration:line-through;color:var(--ink-soft)}
+        .logo-sub {
+            font-size: 0.72rem;
+            font-weight: 300;
+            color: var(--ink-soft);
+            letter-spacing: 0.02em;
+        }
 
-/* per-category hover gradients */
-.card[data-cat="لغة عربية"]:hover   {background:var(--grad-arabic)}
-.card[data-cat="رياضيات"]:hover      {background:var(--grad-math)}
-.card[data-cat="ألعاب"]:hover        {background:var(--grad-games)}
-.card[data-cat="أدوات"]:hover        {background:var(--grad-tools)}
-.card[data-cat="إسلامية"]:hover      {background:var(--grad-islamic)}
-.card[data-cat="علوم"]:hover         {background:var(--grad-science)}
-.card[data-cat="تربية مدنية"]:hover  {background:var(--grad-civic)}
-.card[data-cat="تاريخ"]:hover        {background:var(--grad-history)}
-.card[data-cat="جغرافيا"]:hover      {background:var(--grad-geo)}
+        /* ===== HERO ===== */
+        .hero {
+            padding: 64px 32px 48px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-/* dim siblings */
-.grid.has-focus .card{opacity:0.36;transform:scale(0.98)}
-.grid.has-focus .card.focused{opacity:1;transform:translateY(-4px) scale(1.015);box-shadow:var(--shadow-hover);border-color:transparent;z-index:2}
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--teal);
+            background: var(--teal-pale);
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 0.04em;
+        }
 
-/* card top actions */
-.card-actions-top{position:absolute;top:10px;left:10px;display:flex;gap:4px}
-.btn-fav,.btn-done-icon{
-  width:26px;height:26px;border-radius:50%;border:none;cursor:pointer;
-  font-size:13px;display:flex;align-items:center;justify-content:center;
-  transition:all 0.2s;background:rgba(244,247,244,0.85);
-}
-[data-theme="dark"] .btn-fav,[data-theme="dark"] .btn-done-icon{background:rgba(28,31,46,0.85)}
-.btn-fav:hover{background:var(--gold-pale);transform:scale(1.15)}
-.btn-fav.active{background:var(--gold-pale);color:var(--gold)}
-.btn-done-icon:hover{background:var(--teal-pale);transform:scale(1.15)}
-.btn-done-icon.active{background:var(--teal-pale);color:var(--teal)}
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
 
-.card-top{display:flex;align-items:flex-start;gap:11px}
-.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;transition:transform 0.25s}
-.card:hover .card-icon{transform:scale(1.12) rotate(-4deg)}
-.card-meta{display:flex;flex-direction:column;gap:3px;padding-top:2px}
-.card-badge{font-size:0.68rem;font-weight:500;padding:2px 7px;border-radius:20px;display:inline-block;width:fit-content}
-.card-title{font-size:0.94rem;font-weight:700;color:var(--ink);line-height:1.3}
-.card-desc{font-size:0.81rem;font-weight:300;color:var(--ink-soft);line-height:1.7;flex-grow:1}
-.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:9px;border-top:1px solid rgba(221,232,228,0.5)}
-[data-theme="dark"] .card-footer{border-top-color:rgba(44,48,80,0.7)}
-.card-age{font-size:0.71rem;color:var(--ink-soft)}
-.done-badge{display:none;font-size:0.7rem;background:#d4f5e5;color:var(--teal-dark);padding:2px 7px;border-radius:20px}
-.card.done .done-badge{display:inline-block}
+        .hero h1 span {
+            color: var(--gold);
+        }
 
-.btn-open{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:5px 13px;background:var(--teal);color:white;
-  border:none;border-radius:8px;font-family:inherit;font-size:0.8rem;font-weight:500;
-  cursor:pointer;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
-}
-.btn-open:hover{background:var(--teal-dark);transform:scale(1.05);box-shadow:0 3px 10px rgba(30,158,114,0.3)}
-.btn-open.disabled{background:#8899aa;pointer-events:none;cursor:default;opacity:0.6}
+        .hero p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--ink-soft);
+            line-height: 1.8;
+            max-width: 560px;
+            margin: 0 auto 36px;
+        }
 
-.empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-soft)}
-.empty-state .emoji{font-size:2.4rem;margin-bottom:10px}
+        /* ===== SEARCH + FILTERS ===== */
+        .controls {
+            padding: 0 24px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-/* ===== FOOTER ===== */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:22px 24px;text-align:center;transition:background 0.3s}
-.footer-brand{font-size:0.9rem;font-weight:700;color:var(--ink);margin-bottom:5px}
-.footer-copy{font-size:0.77rem;color:var(--ink-soft)}
+        .search-wrap {
+            position: relative;
+            margin-bottom: 20px;
+        }
 
-/* ===== PREVIEW MODAL ===== */
-#previewOverlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(10,14,28,0.65);z-index:500;
-  padding:18px 14px;overflow-y:auto;
-  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
-}
-.preview-modal{
-  background:var(--surface);max-width:700px;margin:0 auto;
-  border-radius:20px;overflow:hidden;
-  box-shadow:0 16px 60px rgba(0,0,0,0.3);
-  animation:scaleIn 0.26s ease both;
-}
-.preview-header{padding:14px 18px;display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--border)}
-.preview-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.preview-meta{flex:1}
-.preview-name{font-size:0.97rem;font-weight:700;color:var(--ink)}
-.preview-cat{font-size:0.73rem;color:var(--ink-soft)}
-.preview-close{background:var(--paper);border:none;color:var(--ink-soft);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:0.95rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
-.preview-close:hover{background:var(--border);color:var(--ink)}
-.preview-iframe-wrap{position:relative;width:100%;height:460px;background:var(--paper)}
-.preview-iframe-wrap iframe{width:100%;height:100%;border:none;display:block}
-.preview-loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--paper);font-size:0.85rem;color:var(--ink-soft)}
-.spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin 0.7s linear infinite}
-.preview-footer{padding:12px 18px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
-.preview-footer .age-tag{font-size:0.76rem;color:var(--ink-soft)}
-.btn-open-full{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;background:var(--teal);color:white;text-decoration:none;border-radius:9px;font-family:inherit;font-size:0.85rem;font-weight:600;transition:background 0.2s}
-.btn-open-full:hover{background:var(--teal-dark)}
-.btn-close-preview{padding:7px 14px;background:var(--paper);color:var(--ink-soft);border:1.5px solid var(--border);border-radius:9px;font-family:inherit;font-size:0.82rem;cursor:pointer;transition:all 0.2s}
-.btn-close-preview:hover{border-color:var(--ink-soft)}
+        .search-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--ink-soft);
+            font-size: 1rem;
+            pointer-events: none;
+        }
 
-/* ===== ADMIN OVERLAY ===== */
-#adminOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.58);z-index:1000;overflow-y:auto;padding:18px 14px}
-.admin-modal{background:var(--surface);max-width:580px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);animation:scaleIn 0.24s ease both}
-.admin-header{background:linear-gradient(135deg,var(--teal),var(--teal-dark));padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
-.admin-header span{color:white;font-size:0.97rem;font-weight:700}
-.admin-close{background:rgba(255,255,255,0.2);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:0.95rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
-.admin-close:hover{background:rgba(255,255,255,0.35)}
+        #searchBar {
+            width: 100%;
+            padding: 13px 44px 13px 20px;
+            border: 1.5px solid var(--border);
+            border-radius: 50px;
+            background: var(--surface);
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            font-size: 0.95rem;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.2s;
+            text-align: right;
+        }
 
-#adminLogin{padding:28px 22px;text-align:center}
-#adminLogin .lock-icon{font-size:2rem;margin-bottom:9px}
-#adminLogin p{color:var(--ink-soft);margin-bottom:16px;font-size:0.88rem}
-.inp{width:100%;padding:9px 13px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.9rem;color:var(--ink);background:var(--surface);outline:none;margin-bottom:9px;text-align:center;transition:border-color 0.2s}
-.inp:focus{border-color:var(--teal)}
-.btn-primary{width:100%;padding:10px;background:var(--teal);color:white;border:none;border-radius:8px;font-family:inherit;font-size:0.92rem;cursor:pointer;font-weight:600;transition:background 0.2s}
-.btn-primary:hover{background:var(--teal-dark)}
-.err-msg{color:#e53e3e;font-size:0.8rem;margin-top:7px;display:none}
+        #searchBar:focus {
+            border-color: var(--teal);
+        }
 
-#adminPanel{display:none;padding:18px}
-.tab-bar{display:flex;gap:3px;margin-bottom:16px;background:var(--paper);border-radius:10px;padding:3px}
-.tab-btn{flex:1;padding:7px;border:none;background:none;border-radius:7px;font-family:inherit;font-size:0.82rem;font-weight:500;color:var(--ink-soft);cursor:pointer;transition:all 0.2s}
-.tab-btn.active{background:var(--surface);color:var(--teal);box-shadow:0 1px 4px rgba(0,0,0,0.1)}
-.tab-content{display:none}
-.tab-content.active{display:block}
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
 
-#adminAppList{display:flex;flex-direction:column;gap:6px;max-height:250px;overflow-y:auto;padding-right:3px}
-.admin-app-row{display:flex;align-items:center;gap:7px;padding:7px 9px;background:var(--paper);border-radius:8px}
-.row-icon{font-size:0.97rem}
-.row-name{flex:1;font-size:0.84rem;color:var(--ink);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row-cat{font-size:0.71rem;color:var(--ink-soft);background:var(--border);padding:2px 7px;border-radius:10px}
-.btn-edit-row,.btn-del-row{border:none;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:0.76rem}
-.btn-edit-row{background:var(--teal-pale);color:var(--teal)}
-.btn-del-row{background:#fff0f0;color:#e53e3e}
-[data-theme="dark"] .btn-del-row{background:#3a1010}
+        .filter-btn {
+            padding: 7px 18px;
+            border: 1.5px solid var(--border);
+            border-radius: 50px;
+            background: var(--surface);
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
 
-.form-grid{display:flex;flex-direction:column;gap:8px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.form-inp{padding:8px 11px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.84rem;color:var(--ink);background:var(--surface);outline:none;transition:border-color 0.2s;width:100%}
-.form-inp:focus{border-color:var(--teal)}
-select.form-inp{background:var(--surface)}
-textarea.form-inp{resize:none}
-.form-actions{display:flex;gap:7px;margin-top:3px}
-.btn-save{flex:1;padding:9px;background:var(--teal);color:white;border:none;border-radius:8px;font-family:inherit;font-size:0.88rem;cursor:pointer;font-weight:600;transition:background 0.2s}
-.btn-save:hover{background:var(--teal-dark)}
-.btn-cancel{padding:9px 14px;background:var(--paper);color:var(--ink-soft);border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.88rem;cursor:pointer}
-.form-msg{font-size:0.8rem;text-align:center;display:none;margin-top:5px}
+        .filter-btn:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
 
-.backup-section{display:flex;flex-direction:column;gap:9px}
-.backup-card{background:var(--paper);border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px}
-.bc-icon{font-size:1.4rem}
-.bc-info{flex:1}
-.bc-title{font-size:0.86rem;font-weight:600;color:var(--ink);margin-bottom:2px}
-.bc-desc{font-size:0.76rem;color:var(--ink-soft)}
-.btn-backup{padding:7px 14px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.82rem;font-weight:500;transition:all 0.2s;white-space:nowrap}
-.btn-export{background:var(--gold-pale);color:var(--gold)}
-.btn-export:hover{filter:brightness(0.92)}
-.btn-import{background:var(--teal-pale);color:var(--teal)}
-.btn-import:hover{filter:brightness(0.92)}
-.btn-reset{background:#fff0f0;color:#e53e3e}
-[data-theme="dark"] .btn-reset{background:#3a1010;color:#f08080}
-.btn-reset:hover{filter:brightness(1.1)}
+        .filter-btn.active {
+            background: var(--teal);
+            border-color: var(--teal);
+            color: white;
+        }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:600px){
-  header{padding:12px 14px}
-  .hero{padding:28px 14px 20px}
-  .grid-wrap{padding:14px 14px 48px}
-  .sticky-controls{padding:9px 14px}
-  .grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  #adminOverlay,#previewOverlay{padding:10px 6px}
-  .preview-iframe-wrap{height:340px}
-  .dark-toggle span.toggle-label{display:none}
-}
-</style>
+        /* ===== GRID ===== */
+        .grid-wrap {
+            padding: 0 24px 64px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: default;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .card-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .icon-arabic  { background: #eef6f5; }
+        .icon-math    { background: #f0eeff; }
+        .icon-science { background: #fff3e8; }
+        .icon-tool    { background: #f0f5ff; }
+
+        .card-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .card-badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--teal);
+            background: var(--teal-pale);
+            padding: 2px 8px;
+            border-radius: 20px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ink-soft);
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .card-age {
+            font-size: 0.75rem;
+            color: var(--ink-soft);
+        }
+
+        .btn-open {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 16px;
+            background: var(--teal);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn-open:hover {
+            background: #266b5e;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--ink-soft);
+        }
+
+        .empty-state .emoji { font-size: 2.5rem; margin-bottom: 12px; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 28px 32px;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--ink-soft);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            header { padding: 14px 18px; }
+            .hero { padding: 40px 18px 32px; }
+            .controls, .grid-wrap { padding-right: 18px; padding-left: 18px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
 <!-- ترويسة -->
 <header>
-  <div class="logo" id="logoTrigger">
-    <div class="logo-mark">✦</div>
-    <div class="logo-text">
-      <span class="logo-ar">رنيم فاي</span>
-      <span class="logo-sub">التعلم الممتع</span>
+    <div class="logo">
+        <div class="logo-mark">✦</div>
+        <div class="logo-text">
+            <span class="logo-ar">رنيم فاي</span>
+            <span class="logo-sub">التعلم الممتع</span>
+        </div>
     </div>
-  </div>
-  <button class="dark-toggle" id="darkToggle" onclick="toggleDark()" title="تبديل الوضع">
-    <span id="darkIcon">🌙</span>
-    <span class="toggle-label" id="darkLabel">وضع الليل</span>
-  </button>
+
 </header>
 
-<!-- Hero -->
+<!-- بطل الصفحة -->
 <section class="hero">
-  <span class="hero-eyebrow">مكتبة التطبيقات التعليمية</span>
-  <h1>تعلّم اليوم بطريقة <span>ممتعة</span></h1>
-  <p>مشروع تعليمي رقمي مستقل، يُقدّم تطبيقات تفاعلية مجانية باللغة العربية للمتعلمين من رياض الأطفال حتى الطور الابتدائي، وفق المنهج الجزائري.</p>
+    <span class="hero-eyebrow">مكتبة التطبيقات التعليمية</span>
+    <h1>تعلّم اليوم بطريقة <span>ممتعة</span></h1>
+    <p>مشروع تعليمي رقمي مستقل، يُقدّم تطبيقات تفاعلية مجانية باللغة العربية للمتعلمين من رياض الأطفال حتى الطور الابتدائي. صُمِّمت كل تطبيقاتنا وفق المنهج الجزائري، بأسلوب يجمع بين المتعة والأسس التربوية.</p>
 </section>
 
-<!-- فلاتر -->
-<div class="sticky-controls" id="stickyControls">
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="searchBar" placeholder="ابحث عن تطبيق..." oninput="filterApps()">
-  </div>
-  <div class="filters" id="filtersBar">
-    <button class="filter-btn active" onclick="filterCategory('all',this)">الكل</button>
-    <button class="filter-btn" onclick="filterCategory('لغة عربية',this)">لغة عربية</button>
-    <button class="filter-btn" onclick="filterCategory('رياضيات',this)">رياضيات</button>
-    <button class="filter-btn" onclick="filterCategory('إسلامية',this)">🕌 إسلامية</button>
-    <button class="filter-btn" onclick="filterCategory('علوم',this)">🔬 علوم</button>
-    <button class="filter-btn" onclick="filterCategory('تربية مدنية',this)">🏛️ مدنية</button>
-    <button class="filter-btn" onclick="filterCategory('تاريخ',this)">📜 تاريخ</button>
-    <button class="filter-btn" onclick="filterCategory('جغرافيا',this)">🗺️ جغرافيا</button>
-    <button class="filter-btn" onclick="filterCategory('ألعاب',this)">🎮 ألعاب</button>
-    <button class="filter-btn" onclick="filterCategory('أدوات',this)">أدوات</button>
-  </div>
+<!-- بحث وتصفية -->
+<div class="controls">
+    <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchBar" placeholder="ابحث عن تطبيق..." oninput="filterApps()">
+    </div>
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterCategory('all', this)">الكل</button>
+        <button class="filter-btn" onclick="filterCategory('لغة عربية', this)">لغة عربية</button>
+        <button class="filter-btn" onclick="filterCategory('رياضيات', this)">رياضيات</button>
+        <button class="filter-btn" onclick="filterCategory('ما قبل المدرسة', this)">ما قبل المدرسة</button>
+        <button class="filter-btn" onclick="filterCategory('ألعاب', this)">🎮 ألعاب</button>
+        <button class="filter-btn" onclick="filterCategory('أدوات', this)">أدوات</button>
+    </div>
 </div>
 
-<!-- شبكة البطاقات -->
+<!-- شبكة التطبيقات -->
 <div class="grid-wrap">
-  <div class="section-label">
-    <span>جميع التطبيقات</span>
-    <span class="apps-count" id="appsCount">0 تطبيق</span>
-  </div>
-  <div class="grid" id="appGrid"></div>
+    <div class="section-label">جميع التطبيقات</div>
+    <div class="grid" id="appGrid">
+
+        <div class="card" data-category="لغة عربية" data-title="الهمزة المتوسطة hamza challenge">
+            <div class="card-top">
+                <div class="card-icon icon-arabic">📝</div>
+                <div class="card-meta">
+                    <span class="card-badge">لغة عربية</span>
+                    <h3>الهمزة المتوسطة</h3>
+                </div>
+            </div>
+            <p>سبع مراحل تفاعلية لإتقان كتابة الهمزة المتوسطة بأسلوب ميزان القوة، مع تغذية راجعة صوتية وتمارين إملائية.</p>
+            <div class="card-footer">
+                <span class="card-age">الصفوف 3–5</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="لغة عربية" data-title="النجمة الصغيرة تتعلم الحروف alphabet">
+            <div class="card-top">
+                <div class="card-icon icon-arabic">⭐</div>
+                <div class="card-meta">
+                    <span class="card-badge">لغة عربية</span>
+                    <h3>النجمة الصغيرة تتعلم الحروف</h3>
+                </div>
+            </div>
+            <p>28 حرفًا عربيًا بأشكالها الموضعية مع نطق صوتي وتمييز صوتي للأطفال في سن ما قبل المدرسة.</p>
+            <div class="card-footer">
+                <span class="card-age">4–6 سنوات</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="ما قبل المدرسة" data-title="رنيم تتعلم الحروف اطفال">
+            <div class="card-top">
+                <div class="card-icon icon-arabic">🌸</div>
+                <div class="card-meta">
+                    <span class="card-badge">ما قبل المدرسة</span>
+                    <h3>رنيم تتعلم الحروف</h3>
+                </div>
+            </div>
+            <p>تطبيق الحروف بالإيموجي مع التحقق الصوتي فقط — مصمَّم للأطفال 4–5 سنوات بصوت هادئ وتكرار مريح.</p>
+            <div class="card-footer">
+                <span class="card-age">4–5 سنوات</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="ما قبل المدرسة" data-title="مغامرة الحيوانات animals science">
+            <div class="card-top">
+                <div class="card-icon icon-science">🦁</div>
+                <div class="card-meta">
+                    <span class="card-badge">ما قبل المدرسة</span>
+                    <h3>مغامرة الحيوانات</h3>
+                </div>
+            </div>
+            <p>ثلاث مراحل: الحيوانات الأليفة والمتوحشة، طريقة الحركة، والغذاء — بواجهة قوس قزح وأسئلة مشوِّقة.</p>
+            <div class="card-footer">
+                <span class="card-age">6–7 سنوات</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="رياضيات" data-title="الأرقام والأشكال الهندسية math">
+            <div class="card-top">
+                <div class="card-icon icon-math">🔢</div>
+                <div class="card-meta">
+                    <span class="card-badge">رياضيات</span>
+                    <h3>الأرقام والأشكال الهندسية</h3>
+                </div>
+            </div>
+            <p>سحب وإفلات، أشكال SVG، وتعليم الأعداد بالعربية الفصحى المكيَّفة جنسيًا للأطفال 4–7 سنوات.</p>
+            <div class="card-footer">
+                <span class="card-age">4–7 سنوات</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="رياضيات" data-title="رنيم تتعلم الضرب multiplication">
+            <div class="card-top">
+                <div class="card-icon icon-math">✖️</div>
+                <div class="card-meta">
+                    <span class="card-badge">رياضيات</span>
+                    <h3>رنيم تتعلم الضرب</h3>
+                </div>
+            </div>
+            <p>تجميع بصري بالنقاط، جمع متكرر، واختبار جدول الضرب مع كونفيتي واحتفالات تشجيعية.</p>
+            <div class="card-footer">
+                <span class="card-age">7–9 سنوات</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="رياضيات" data-title="وحدات قياس السوائل liquid measurement">
+            <div class="card-top">
+                <div class="card-icon icon-math">💧</div>
+                <div class="card-meta">
+                    <span class="card-badge">رياضيات</span>
+                    <h3>وحدات قياس السوائل</h3>
+                </div>
+            </div>
+            <p>مرحلتان: اكتشاف جدول التحويل بالصوت، ثم تمارين تدريجية مع جولة التصحيح الذكية.</p>
+            <div class="card-footer">
+                <span class="card-age">الصف 4–5</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="رياضيات" data-title="أباكوس سوروبان soroban abacus">
+            <div class="card-top">
+                <div class="card-icon icon-math">🧮</div>
+                <div class="card-meta">
+                    <span class="card-badge">رياضيات</span>
+                    <h3>الأباكوس — سوروبان</h3>
+                </div>
+            </div>
+            <p>أباكوس تفاعلي 13 عمودًا مع تمارين الجمع والطرح للمستوى الأول وتتبع النتيجة.</p>
+            <div class="card-footer">
+                <span class="card-age">الصف 1–3</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="ألعاب" data-title="من أنا لعبة تخمين guess game">
+            <div class="card-top">
+                <div class="card-icon icon-science">🎯</div>
+                <div class="card-meta">
+                    <span class="card-badge" style="background:#fff0fb;color:#a020a0;">ألعاب</span>
+                    <h3>من أنا؟</h3>
+                </div>
+            </div>
+            <p>لعبة تخمين بستة تصنيفات، اختر الإجابة بالإيموجي مع نطق صوتي وبطاقات معلوماتية وكونفيتي.</p>
+            <div class="card-footer">
+                <span class="card-age">6–12 سنوات</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="ألعاب" data-title="لعبة الذاكرة memory matching cards">
+            <div class="card-top">
+                <div class="card-icon icon-science">🃏</div>
+                <div class="card-meta">
+                    <span class="card-badge" style="background:#fff0fb;color:#a020a0;">ألعاب</span>
+                    <h3>لعبة الذاكرة</h3>
+                </div>
+            </div>
+            <p>16 زوجاً من البطاقات بثلاث مستويات صعوبة، تقليب ثلاثي الأبعاد، نطق صوتي، وتوافق مع الأجهزة اللوحية.</p>
+            <div class="card-footer">
+                <span class="card-age">6–10 سنوات</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="ألعاب" data-title="قصة تفاعلية مغامرة نجمة الغابة السحرية story">
+            <div class="card-top">
+                <div class="card-icon icon-science">📖</div>
+                <div class="card-meta">
+                    <span class="card-badge" style="background:#fff0fb;color:#a020a0;">ألعاب</span>
+                    <h3>مغامرة نجمة في الغابة السحرية</h3>
+                </div>
+            </div>
+            <p>قصة تفاعلية متشعبة من 11 مشهداً وخمس نهايات مختلفة، مع دروس أخلاقية مضمَّنة وخيارات يتحكم بها الطفل.</p>
+            <div class="card-footer">
+                <span class="card-age">6–10 سنوات</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+        <div class="card" data-category="أدوات" data-title="مساعد العقود قانون جزائري legal">
+            <div class="card-top">
+                <div class="card-icon icon-tool">⚖️</div>
+                <div class="card-meta">
+                    <span class="card-badge">أدوات</span>
+                    <h3>مساعد العقود الجزائري</h3>
+                </div>
+            </div>
+            <p>توليد وتحليل العقود وسؤال القانون الجزائري بأسلوب محادثة — يشمل منشئ العقود الديناميكي.</p>
+            <div class="card-footer">
+                <span class="card-age">للجمهور العام</span>
+                <a href="رابط_هنا" target="_blank" class="btn-open">فتح ←</a>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <!-- تذييل -->
 <footer>
-  <div class="footer-brand">رنيم فاي — التعلم الممتع</div>
-  <div class="footer-copy">© 2026 Samira Abdessadok / رنيم فاي. جميع الحقوق محفوظة وفق القانون الجزائري 03-05.</div>
+    <div class="footer-brand">رنيم فاي — التعلم الممتع</div>
+    <div class="footer-copy">© 2026 Samira Abdessadok / رنيم فاي. جميع الحقوق محفوظة وفق القانون الجزائري 03-05.</div>
+    <button onclick="openAdmin()" style="margin-top:14px;background:none;border:1px solid var(--border);color:var(--ink-soft);padding:6px 16px;border-radius:20px;cursor:pointer;font-size:0.78rem;font-family:inherit;">⚙️ لوحة التحكم</button>
 </footer>
 
-<!-- معاينة التطبيق -->
-<div id="previewOverlay">
-  <div class="preview-modal">
-    <div class="preview-header">
-      <div class="preview-icon" id="prevIcon"></div>
-      <div class="preview-meta">
-        <div class="preview-name" id="prevName"></div>
-        <div class="preview-cat" id="prevCat"></div>
-      </div>
-      <button class="preview-close" onclick="closePreview()">✕</button>
-    </div>
-    <div class="preview-iframe-wrap">
-      <div class="preview-loader" id="prevLoader"><div class="spinner"></div><span>جارٍ التحميل…</span></div>
-      <iframe id="prevFrame" title="معاينة" sandbox="allow-scripts allow-same-origin allow-forms" onload="iframeLoaded()"></iframe>
-    </div>
-    <div class="preview-footer">
-      <span class="age-tag" id="prevAge"></span>
-      <div style="display:flex;gap:7px">
-        <button class="btn-close-preview" onclick="closePreview()">إغلاق</button>
-        <a id="prevOpenFull" href="#" target="_blank" class="btn-open-full">فتح كاملاً ↗</a>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- ===== لوحة التحكم ===== -->
+<div id="adminOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;overflow-y:auto;">
+    <div style="background:#fff;max-width:560px;margin:40px auto;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.2);">
 
-<!-- لوحة التحكم -->
-<div id="adminOverlay">
-  <div class="admin-modal">
-    <div class="admin-header">
-      <span>⚙️ لوحة تحكم رنيم فاي</span>
-      <button class="admin-close" onclick="closeAdmin()">✕</button>
-    </div>
-    <div id="adminLogin">
-      <div class="lock-icon">🔒</div>
-      <p>أدخلي كلمة السر للوصول إلى لوحة التحكم</p>
-      <input type="password" id="adminPass" class="inp" placeholder="كلمة السر" onkeydown="if(event.key==='Enter')checkPass()">
-      <button class="btn-primary" onclick="checkPass()">دخول</button>
-      <p id="passError" class="err-msg">❌ كلمة السر غير صحيحة</p>
-    </div>
-    <div id="adminPanel">
-      <div class="tab-bar">
-        <button class="tab-btn active" onclick="switchTab('list',this)">📋 التطبيقات</button>
-        <button class="tab-btn" onclick="switchTab('form',this)">✏️ إضافة / تعديل</button>
-        <button class="tab-btn" onclick="switchTab('backup',this)">💾 نسخ احتياطي</button>
-      </div>
-      <!-- قائمة -->
-      <div id="tab-list" class="tab-content active">
-        <div id="adminAppList"></div>
-      </div>
-      <!-- نموذج -->
-      <div id="tab-form" class="tab-content">
-        <div style="font-weight:700;color:var(--ink);margin-bottom:11px;font-size:0.9rem" id="formTitle">➕ إضافة تطبيق جديد</div>
-        <input type="hidden" id="editIndex" value="-1">
-        <div class="form-grid">
-          <input id="fName" class="form-inp" placeholder="اسم التطبيق *">
-          <textarea id="fDesc" class="form-inp" placeholder="وصف مختصر *" rows="2"></textarea>
-          <input id="fUrl" class="form-inp" placeholder="رابط التطبيق (https://...)">
-          <div class="form-row">
-            <select id="fCat" class="form-inp">
-              <option value="">-- التصنيف --</option>
-              <option value="لغة عربية">لغة عربية</option>
-              <option value="رياضيات">رياضيات</option>
-              <option value="إسلامية">إسلامية</option>
-              <option value="علوم">علوم</option>
-              <option value="تربية مدنية">تربية مدنية</option>
-              <option value="تاريخ">تاريخ</option>
-              <option value="جغرافيا">جغرافيا</option>
-              <option value="ألعاب">ألعاب</option>
-              <option value="أدوات">أدوات</option>
-            </select>
-            <input id="fAge" class="form-inp" placeholder="الفئة العمرية">
-          </div>
-          <input id="fIcon" class="form-inp" placeholder="أيقونة (إيموجي مثل 📖)">
-          <div class="form-actions">
-            <button class="btn-save" onclick="saveApp()">💾 حفظ</button>
-            <button class="btn-cancel" onclick="resetForm()">إلغاء</button>
-          </div>
-          <p id="formMsg" class="form-msg"></p>
+        <!-- رأس اللوحة -->
+        <div style="background:var(--teal);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="color:white;font-size:1rem;font-weight:700;">⚙️ لوحة تحكم رنيم فاي</span>
+            <button onclick="closeAdmin()" style="background:rgba(255,255,255,0.2);border:none;color:white;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;">✕</button>
         </div>
-      </div>
-      <!-- نسخ احتياطي -->
-      <div id="tab-backup" class="tab-content">
-        <div class="backup-section">
-          <div class="backup-card">
-            <span class="bc-icon">📤</span>
-            <div class="bc-info"><div class="bc-title">تصدير البيانات</div><div class="bc-desc">تحميل كافة البيانات كملف JSON</div></div>
-            <button class="btn-backup btn-export" onclick="exportData()">تصدير</button>
-          </div>
-          <div class="backup-card">
-            <span class="bc-icon">📥</span>
-            <div class="bc-info"><div class="bc-title">استيراد البيانات</div><div class="bc-desc">استبدال البيانات بملف JSON محفوظ</div></div>
-            <button class="btn-backup btn-import" onclick="document.getElementById('importFile').click()">استيراد</button>
-            <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(this)">
-          </div>
-          <div class="backup-card">
-            <span class="bc-icon">🔄</span>
-            <div class="bc-info"><div class="bc-title">استعادة الافتراضي</div><div class="bc-desc">العودة إلى القائمة الأصلية</div></div>
-            <button class="btn-backup btn-reset" onclick="resetToDefault()">استعادة</button>
-          </div>
-          <p id="backupMsg" style="font-size:0.8rem;text-align:center;display:none;margin-top:4px"></p>
+
+        <!-- شاشة كلمة السر -->
+        <div id="adminLogin" style="padding:32px 24px;text-align:center;">
+            <div style="font-size:2rem;margin-bottom:12px;">🔒</div>
+            <p style="color:var(--ink-soft);margin-bottom:20px;font-size:0.9rem;">أدخلي كلمة السر للوصول إلى لوحة التحكم</p>
+            <input type="password" id="adminPass" placeholder="كلمة السر" 
+                style="width:100%;padding:11px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.95rem;outline:none;margin-bottom:12px;text-align:center;"
+                onkeydown="if(event.key==='Enter') checkPass()">
+            <button onclick="checkPass()" 
+                style="width:100%;padding:11px;background:var(--teal);color:white;border:none;border-radius:8px;font-family:inherit;font-size:0.95rem;cursor:pointer;font-weight:600;">
+                دخول
+            </button>
+            <p id="passError" style="color:#e53e3e;font-size:0.82rem;margin-top:10px;display:none;">❌ كلمة السر غير صحيحة</p>
         </div>
-      </div>
+
+        <!-- لوحة الإدارة -->
+        <div id="adminPanel" style="display:none;padding:24px;">
+
+            <!-- قائمة التطبيقات -->
+            <div style="margin-bottom:20px;">
+                <div style="font-weight:700;color:var(--ink);margin-bottom:12px;font-size:0.95rem;">📋 التطبيقات المحفوظة</div>
+                <div id="adminAppList" style="display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto;"></div>
+            </div>
+
+            <hr style="border:none;border-top:1px solid var(--border);margin-bottom:20px;">
+
+            <!-- نموذج الإضافة / التعديل -->
+            <div style="font-weight:700;color:var(--ink);margin-bottom:14px;font-size:0.95rem;" id="formTitle">➕ إضافة تطبيق جديد</div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;">
+                <input type="hidden" id="editIndex" value="-1">
+
+                <input id="fName" placeholder="اسم التطبيق *" 
+                    style="padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.88rem;outline:none;">
+
+                <textarea id="fDesc" placeholder="وصف مختصر *" rows="2"
+                    style="padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.88rem;outline:none;resize:none;"></textarea>
+
+                <input id="fUrl" placeholder="رابط التطبيق (https://...)" 
+                    style="padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.88rem;outline:none;">
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                    <select id="fCat" style="padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.88rem;outline:none;background:white;">
+                        <option value="">-- التصنيف --</option>
+                        <option value="لغة عربية">لغة عربية</option>
+                        <option value="رياضيات">رياضيات</option>
+                        <option value="ما قبل المدرسة">ما قبل المدرسة</option>
+                        <option value="ألعاب">ألعاب</option>
+                        <option value="أدوات">أدوات</option>
+                    </select>
+                    <input id="fAge" placeholder="الفئة العمرية" 
+                        style="padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.88rem;outline:none;">
+                </div>
+
+                <input id="fIcon" placeholder="أيقونة (إيموجي مثل 📖)" 
+                    style="padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.88rem;outline:none;">
+
+                <div style="display:flex;gap:8px;margin-top:4px;">
+                    <button onclick="saveApp()" 
+                        style="flex:1;padding:11px;background:var(--teal);color:white;border:none;border-radius:8px;font-family:inherit;font-size:0.9rem;cursor:pointer;font-weight:600;">
+                        💾 حفظ
+                    </button>
+                    <button onclick="resetForm()" 
+                        style="padding:11px 18px;background:var(--paper);color:var(--ink-soft);border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.9rem;cursor:pointer;">
+                        إلغاء
+                    </button>
+                </div>
+                <p id="formMsg" style="font-size:0.82rem;text-align:center;display:none;"></p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <script>
-// ===================================================
-//  CONFIG
-// ===================================================
-var ADMIN_PASS='رنيم2026';
-var STORE_KEY='ranimfay_apps_v2';
-var FAV_KEY='ranimfay_favs';
-var DONE_KEY='ranimfay_done';
-var DARK_KEY='ranimfay_dark';
+    // ===== بيانات التطبيقات الأساسية =====
+    var ADMIN_PASS = 'رنيم2026';
 
-// ===================================================
-//  CATEGORY STYLES
-// ===================================================
-var catColors={
-  'لغة عربية':    {bg:'#eef6f5',color:'#1e9e72'},
-  'رياضيات':       {bg:'#f0eeff',color:'#6c3fc5'},
-  'إسلامية':       {bg:'#e8fff2',color:'#15803d'},
-  'علوم':          {bg:'#e8f4ff',color:'#1d5fa8'},
-  'تربية مدنية':   {bg:'#fffbe8',color:'#92700a'},
-  'تاريخ':         {bg:'#fff2e8',color:'#b84c10'},
-  'جغرافيا':       {bg:'#eeffee',color:'#2d7a2d'},
-  'ألعاب':         {bg:'#fff0fb',color:'#a020a0'},
-  'أدوات':         {bg:'#f0f5ff',color:'#2060c0'}
-};
+    var defaultApps = [
+        { name:'الهمزة المتوسطة', desc:'سبع مراحل تفاعلية لإتقان كتابة الهمزة المتوسطة بأسلوب ميزان القوة، مع تغذية راجعة صوتية وتمارين إملائية.', url:'رابط_هنا', cat:'لغة عربية', age:'الصفوف 3–5', icon:'📝' },
+        { name:'النجمة الصغيرة تتعلم الحروف', desc:'28 حرفًا عربيًا بأشكالها الموضعية مع نطق صوتي وتمييز صوتي للأطفال في سن ما قبل المدرسة.', url:'رابط_هنا', cat:'لغة عربية', age:'4–6 سنوات', icon:'⭐' },
+        { name:'رنيم تتعلم الحروف', desc:'تطبيق الحروف بالإيموجي مع التحقق الصوتي فقط — مصمَّم للأطفال 4–5 سنوات بصوت هادئ وتكرار مريح.', url:'رابط_هنا', cat:'ما قبل المدرسة', age:'4–5 سنوات', icon:'🌸' },
+        { name:'مغامرة الحيوانات', desc:'ثلاث مراحل: الحيوانات الأليفة والمتوحشة، طريقة الحركة، والغذاء — بواجهة قوس قزح وأسئلة مشوِّقة.', url:'رابط_هنا', cat:'ما قبل المدرسة', age:'6–7 سنوات', icon:'🦁' },
+        { name:'الأرقام والأشكال الهندسية', desc:'سحب وإفلات، أشكال SVG، وتعليم الأعداد بالعربية الفصحى المكيَّفة جنسيًا للأطفال 4–7 سنوات.', url:'رابط_هنا', cat:'رياضيات', age:'4–7 سنوات', icon:'🔢' },
+        { name:'رنيم تتعلم الضرب', desc:'تجميع بصري بالنقاط، جمع متكرر، واختبار جدول الضرب مع كونفيتي واحتفالات تشجيعية.', url:'رابط_هنا', cat:'رياضيات', age:'7–9 سنوات', icon:'✖️' },
+        { name:'وحدات قياس السوائل', desc:'مرحلتان: اكتشاف جدول التحويل بالصوت، ثم تمارين تدريجية مع جولة التصحيح الذكية.', url:'رابط_هنا', cat:'رياضيات', age:'الصف 4–5', icon:'💧' },
+        { name:'الأباكوس — سوروبان', desc:'أباكوس تفاعلي 13 عمودًا مع تمارين الجمع والطرح للمستوى الأول وتتبع النتيجة.', url:'رابط_هنا', cat:'رياضيات', age:'الصف 1–3', icon:'🧮' },
+        { name:'من أنا؟', desc:'لعبة تخمين بستة تصنيفات، اختر الإجابة بالإيموجي مع نطق صوتي وبطاقات معلوماتية وكونفيتي.', url:'رابط_هنا', cat:'ألعاب', age:'6–12 سنوات', icon:'🎯' },
+        { name:'لعبة الذاكرة', desc:'16 زوجاً من البطاقات بثلاث مستويات صعوبة، تقليب ثلاثي الأبعاد، نطق صوتي، وتوافق مع الأجهزة اللوحية.', url:'رابط_هنا', cat:'ألعاب', age:'6–10 سنوات', icon:'🃏' },
+        { name:'مغامرة نجمة في الغابة السحرية', desc:'قصة تفاعلية متشعبة من 11 مشهداً وخمس نهايات مختلفة، مع دروس أخلاقية مضمَّنة وخيارات يتحكم بها الطفل.', url:'رابط_هنا', cat:'ألعاب', age:'6–10 سنوات', icon:'📖' },
+        { name:'مساعد العقود الجزائري', desc:'توليد وتحليل العقود وسؤال القانون الجزائري بأسلوب محادثة — يشمل منشئ العقود الديناميكي.', url:'رابط_هنا', cat:'أدوات', age:'للجمهور العام', icon:'⚖️' }
+    ];
 
-// ===================================================
-//  DEFAULT DATA
-// ===================================================
-var defaultApps=[
-  // لغة عربية
-  {name:'الهمزة المتوسطة',desc:'سبع مراحل تفاعلية لإتقان كتابة الهمزة المتوسطة بأسلوب ميزان القوة، مع تغذية راجعة صوتية وتمارين إملائية.',url:'رابط_هنا',cat:'لغة عربية',age:'الصفوف 3–5',icon:'📝'},
-  {name:'النجمة الصغيرة تتعلم الحروف',desc:'28 حرفًا عربيًا بأشكالها الموضعية مع نطق صوتي وتمييز صوتي للأطفال في سن ما قبل المدرسة.',url:'رابط_هنا',cat:'لغة عربية',age:'4–6 سنوات',icon:'⭐'},
-  {name:'رنيم تتعلم الحروف',desc:'تطبيق الحروف بالإيموجي مع التحقق الصوتي — مصمَّم للأطفال 4–5 سنوات بصوت هادئ وتكرار مريح.',url:'رابط_هنا',cat:'لغة عربية',age:'4–5 سنوات',icon:'🌸'},
-  // رياضيات
-  {name:'الأرقام والأشكال الهندسية',desc:'سحب وإفلات وأشكال SVG وتعليم الأعداد بالعربية الفصحى المكيَّفة جنسيًا للأطفال.',url:'رابط_هنا',cat:'رياضيات',age:'4–7 سنوات',icon:'🔢'},
-  {name:'رنيم تتعلم الضرب',desc:'تجميع بصري بالنقاط، جمع متكرر، واختبار جدول الضرب مع كونفيتي واحتفالات تشجيعية.',url:'رابط_هنا',cat:'رياضيات',age:'7–9 سنوات',icon:'✖️'},
-  {name:'وحدات قياس السوائل',desc:'مرحلتان: اكتشاف جدول التحويل بالصوت، ثم تمارين تدريجية مع جولة التصحيح الذكية.',url:'رابط_هنا',cat:'رياضيات',age:'الصف 4–5',icon:'💧'},
-  {name:'الأباكوس — سوروبان',desc:'أباكوس تفاعلي 13 عمودًا مع تمارين الجمع والطرح للمستوى الأول وتتبع النتيجة.',url:'رابط_هنا',cat:'رياضيات',age:'الصف 1–3',icon:'🧮'},
-  // إسلامية
-  {name:'أركان الإسلام',desc:'تعلّم الأركان الخمسة بطريقة تفاعلية مع أسئلة وصور توضيحية ومقاطع صوتية.',url:'رابط_هنا',cat:'إسلامية',age:'الصف 1–3',icon:'🕌'},
-  {name:'حفظ القرآن الكريم',desc:'تطبيق لحفظ السور القصيرة بالتكرار الصوتي والتحدي الذاتي مع تتبع التقدم.',url:'رابط_هنا',cat:'إسلامية',age:'6–12 سنوات',icon:'📖'},
-  {name:'قصص الأنبياء',desc:'قصص تفاعلية ممتعة عن الأنبياء والرسل بأسلوب مشوق للأطفال مع رسوم ملونة.',url:'رابط_هنا',cat:'إسلامية',age:'6–10 سنوات',icon:'✨'},
-  // علوم
-  {name:'مغامرة الحيوانات',desc:'ثلاث مراحل: الحيوانات الأليفة والمتوحشة، طريقة الحركة، والغذاء — بواجهة قوس قزح.',url:'رابط_هنا',cat:'علوم',age:'6–8 سنوات',icon:'🦁'},
-  {name:'دورة الماء في الطبيعة',desc:'شرح تفاعلي لمراحل دورة الماء: التبخر والتكاثف والتساقط، مع أسئلة وصور متحركة.',url:'رابط_هنا',cat:'علوم',age:'الصف 3–5',icon:'💧'},
-  {name:'جسم الإنسان',desc:'استكشف أجهزة جسم الإنسان بالنقر والتفاعل: الجهاز الهضمي، التنفسي، والدوري.',url:'رابط_هنا',cat:'علوم',age:'الصف 4–5',icon:'🫀'},
-  // تربية مدنية
-  {name:'حقوق الطفل',desc:'تعلّم حقوق الطفل الأساسية من خلال قصص وأسئلة تفاعلية بأسلوب ممتع ومبسط.',url:'رابط_هنا',cat:'تربية مدنية',age:'الصف 2–4',icon:'🏛️'},
-  {name:'مؤسسات الدولة الجزائرية',desc:'تعرّف على مؤسسات الدولة ودور كل منها من خلال خريطة مفاهيمية تفاعلية.',url:'رابط_هنا',cat:'تربية مدنية',age:'الصف 4–5',icon:'🇩🇿'},
-  // تاريخ
-  {name:'ثورة التحرير الجزائرية',desc:'رحلة تفاعلية عبر أحداث ثورة التحرير المجيدة 1954–1962 بالخرائط والصور التاريخية.',url:'رابط_هنا',cat:'تاريخ',age:'الصف 4–5',icon:'📜'},
-  {name:'الحضارات القديمة',desc:'اكتشف الحضارة الإسلامية والفينيقية والأمازيغية من خلال جدول زمني تفاعلي ممتع.',url:'رابط_هنا',cat:'تاريخ',age:'الصف 3–5',icon:'🏺'},
-  // جغرافيا
-  {name:'خريطة الجزائر التفاعلية',desc:'تعرّف على ولايات الجزائر ومناطقها الجغرافية بالنقر على الخريطة مع معلومات مصورة.',url:'رابط_هنا',cat:'جغرافيا',age:'الصف 3–5',icon:'🗺️'},
-  {name:'المناخ والتضاريس',desc:'استكشف مناطق الجزائر: الشمال والهضاب العليا والصحراء الكبرى مع مقارنة المناخ.',url:'رابط_هنا',cat:'جغرافيا',age:'الصف 4–5',icon:'🏔️'},
-  // ألعاب
-  {name:'من أنا؟',desc:'لعبة تخمين بستة تصنيفات، اختر الإجابة بالإيموجي مع نطق صوتي وبطاقات معلوماتية وكونفيتي.',url:'رابط_هنا',cat:'ألعاب',age:'6–12 سنوات',icon:'🎯'},
-  {name:'لعبة الذاكرة',desc:'16 زوجاً من البطاقات بثلاث مستويات صعوبة، تقليب ثلاثي الأبعاد ونطق صوتي.',url:'رابط_هنا',cat:'ألعاب',age:'6–10 سنوات',icon:'🃏'},
-  {name:'مغامرة نجمة في الغابة السحرية',desc:'قصة تفاعلية متشعبة من 11 مشهداً وخمس نهايات مختلفة، مع دروس أخلاقية مضمَّنة.',url:'رابط_هنا',cat:'ألعاب',age:'6–10 سنوات',icon:'🌟'},
-  // أدوات
-  {name:'مساعد العقود الجزائري',desc:'توليد وتحليل العقود وسؤال القانون الجزائري بأسلوب محادثة — يشمل منشئ العقود الديناميكي.',url:'رابط_هنا',cat:'أدوات',age:'للجمهور العام',icon:'⚖️'}
-];
+    // تحميل البيانات من localStorage أو الافتراضية
+    function loadApps() {
+        var saved = localStorage.getItem('ranimfay_apps');
+        return saved ? JSON.parse(saved) : defaultApps;
+    }
 
-// ===================================================
-//  STORAGE
-// ===================================================
-function loadApps(){try{var s=localStorage.getItem(STORE_KEY);return s?JSON.parse(s):JSON.parse(JSON.stringify(defaultApps))}catch(e){return JSON.parse(JSON.stringify(defaultApps))}}
-function saveApps(a){localStorage.setItem(STORE_KEY,JSON.stringify(a))}
-function loadFavs(){try{var s=localStorage.getItem(FAV_KEY);return s?JSON.parse(s):{}}catch(e){return{}}}
-function saveFavs(o){localStorage.setItem(FAV_KEY,JSON.stringify(o))}
-function loadDone(){try{var s=localStorage.getItem(DONE_KEY);return s?JSON.parse(s):{}}catch(e){return{}}}
-function saveDone(o){localStorage.setItem(DONE_KEY,JSON.stringify(o))}
+    function saveApps(arr) {
+        localStorage.setItem('ranimfay_apps', JSON.stringify(arr));
+    }
 
-function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+    // ===== رسم الكروت في الصفحة =====
+    var catColors = {
+        'لغة عربية':     { bg:'#eef6f5', color:'var(--teal)' },
+        'رياضيات':        { bg:'#f0eeff', color:'#6c3fc5' },
+        'ما قبل المدرسة': { bg:'#fff3e8', color:'#c25c00' },
+        'ألعاب':          { bg:'#fff0fb', color:'#a020a0' },
+        'أدوات':          { bg:'#f0f5ff', color:'#2060c0' }
+    };
 
-// ===================================================
-//  DARK MODE
-// ===================================================
-function applyDark(on){
-  document.documentElement.setAttribute('data-theme',on?'dark':'');
-  document.getElementById('darkIcon').textContent=on?'☀️':'🌙';
-  document.getElementById('darkLabel').textContent=on?'وضع النهار':'وضع الليل';
-  localStorage.setItem(DARK_KEY,on?'1':'0');
-}
-function toggleDark(){applyDark(document.documentElement.getAttribute('data-theme')!=='dark')}
-// init dark
-(function(){var d=localStorage.getItem(DARK_KEY);if(d==='1')applyDark(true)})();
+    function renderGrid() {
+        var appsData = loadApps();
+        var grid = document.getElementById('appGrid');
+        grid.innerHTML = '';
+        appsData.forEach(function(app, i) {
+            var c = catColors[app.cat] || { bg:'#f0f0f0', color:'#444' };
+            var card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('data-category', app.cat);
+            card.setAttribute('data-title', app.name.toLowerCase());
+            card.innerHTML =
+                '<div class="card-top">' +
+                    '<div class="card-icon" style="background:' + c.bg + '">' + (app.icon || '📱') + '</div>' +
+                    '<div class="card-meta">' +
+                        '<span class="card-badge" style="background:' + c.bg + ';color:' + c.color + '">' + app.cat + '</span>' +
+                        '<h3>' + app.name + '</h3>' +
+                    '</div>' +
+                '</div>' +
+                '<p>' + app.desc + '</p>' +
+                '<div class="card-footer">' +
+                    '<span class="card-age">' + (app.age || '') + '</span>' +
+                    '<a href="' + app.url + '" target="_blank" class="btn-open">فتح ←</a>' +
+                '</div>';
+            grid.appendChild(card);
+        });
+        currentCat = 'all';
+        currentSearch = '';
+    }
 
-// ===================================================
-//  RENDER GRID
-// ===================================================
-var currentCat='all',currentSearch='';
+    // ===== البحث والتصفية =====
+    var currentCat = 'all';
+    var currentSearch = '';
 
-function renderGrid(){
-  var apps=loadApps(),favs=loadFavs(),done=loadDone();
-  var grid=document.getElementById('appGrid');
-  grid.innerHTML='';
-  var visible=0,delay=0;
+    function updateDisplay() {
+        var cards = document.querySelectorAll('.card');
+        var found = 0;
+        cards.forEach(function(card) {
+            var cat   = card.getAttribute('data-category');
+            var title = card.getAttribute('data-title');
+            var h3    = card.querySelector('h3') ? card.querySelector('h3').innerText : '';
+            var p     = card.querySelector('p')  ? card.querySelector('p').innerText  : '';
+            var matchCat    = currentCat === 'all' || cat === currentCat;
+            var matchSearch = title.includes(currentSearch) || h3.includes(currentSearch) || p.includes(currentSearch);
+            var show = matchCat && matchSearch;
+            card.style.display = show ? '' : 'none';
+            if (show) found++;
+        });
+        var empty = document.getElementById('emptyState');
+        if (found === 0 && !empty) {
+            var el = document.createElement('div');
+            el.id = 'emptyState';
+            el.className = 'empty-state';
+            el.innerHTML = '<div class="emoji">🔍</div><p>لا توجد نتائج مطابقة</p>';
+            document.getElementById('appGrid').appendChild(el);
+        } else if (found > 0 && empty) {
+            empty.remove();
+        }
+    }
 
-  apps.forEach(function(app,i){
-    var matchCat=currentCat==='all'||app.cat===currentCat;
-    var hay=(app.name+' '+app.desc+' '+app.cat).toLowerCase();
-    var matchSearch=!currentSearch||hay.includes(currentSearch);
-    if(!matchCat||!matchSearch)return;
+    function filterCategory(cat, btn) {
+        currentCat = cat;
+        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        updateDisplay();
+    }
 
-    var c=catColors[app.cat]||{bg:'#f0f0f0',color:'#444'};
-    var isFav=!!favs[i],isDone=!!done[i];
-    var isPlaceholder=!app.url||app.url==='رابط_هنا'||app.url==='#';
+    function filterApps() {
+        currentSearch = document.getElementById('searchBar').value.trim().toLowerCase();
+        updateDisplay();
+    }
 
-    var card=document.createElement('div');
-    card.className='card'+(isDone?' done':'');
-    card.setAttribute('data-index',i);
-    card.setAttribute('data-cat',app.cat||'');
-    card.style.animationDelay=(delay*65)+'ms';
+    // ===== لوحة التحكم =====
+    function openAdmin() {
+        document.getElementById('adminOverlay').style.display = 'block';
+        document.getElementById('adminLogin').style.display = 'block';
+        document.getElementById('adminPanel').style.display = 'none';
+        document.getElementById('adminPass').value = '';
+        document.getElementById('passError').style.display = 'none';
+    }
 
-    card.innerHTML=
-      '<div class="card-actions-top">'+
-        '<button class="btn-fav'+(isFav?' active':'')+'" onclick="event.stopPropagation();toggleFav('+i+',this)" title="'+(isFav?'إزالة من المفضلة':'أضف للمفضلة')+'">'+(isFav?'⭐':'☆')+'</button>'+
-        '<button class="btn-done-icon'+(isDone?' active':'')+'" onclick="event.stopPropagation();toggleDone('+i+',this)" title="'+(isDone?'إلغاء الإنجاز':'تم الإنجاز')+'">'+(isDone?'✅':'○')+'</button>'+
-      '</div>'+
-      '<div class="card-top">'+
-        '<div class="card-icon" style="background:'+c.bg+'">'+esc(app.icon||'📱')+'</div>'+
-        '<div class="card-meta">'+
-          '<span class="card-badge" style="background:'+c.bg+';color:'+c.color+'">'+esc(app.cat)+'</span>'+
-          '<div class="card-title">'+esc(app.name)+'</div>'+
-        '</div>'+
-      '</div>'+
-      '<p class="card-desc">'+esc(app.desc)+'</p>'+
-      '<div class="card-footer">'+
-        '<div style="display:flex;align-items:center;gap:5px">'+
-          '<span class="card-age">'+esc(app.age||'')+'</span>'+
-          '<span class="done-badge">✓ منجز</span>'+
-        '</div>'+
-        (isPlaceholder
-          ? '<button class="btn-open disabled" onclick="event.stopPropagation()">قريباً</button>'
-          : '<button class="btn-open" onclick="event.stopPropagation();openPreview('+i+')">معاينة ←</button>')+
-      '</div>';
+    function closeAdmin() {
+        document.getElementById('adminOverlay').style.display = 'none';
+        resetForm();
+    }
 
-    if(!isPlaceholder){card.addEventListener('click',function(){openPreview(i)})}
-    card.addEventListener('mouseenter',function(){dimOthers(i)});
-    card.addEventListener('mouseleave',clearDim);
-    card.addEventListener('touchstart',function(){dimOthers(i)},{passive:true});
-    card.addEventListener('touchend',clearDim,{passive:true});
+    function checkPass() {
+        var val = document.getElementById('adminPass').value;
+        if (val === ADMIN_PASS) {
+            document.getElementById('adminLogin').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            renderAdminList();
+        } else {
+            document.getElementById('passError').style.display = 'block';
+        }
+    }
 
-    grid.appendChild(card);
-    visible++;delay++;
-  });
+    function renderAdminList() {
+        var appsData = loadApps();
+        var list = document.getElementById('adminAppList');
+        list.innerHTML = '';
+        if (appsData.length === 0) {
+            list.innerHTML = '<p style="color:var(--ink-soft);font-size:0.85rem;text-align:center;">لا توجد تطبيقات بعد</p>';
+            return;
+        }
+        appsData.forEach(function(app, i) {
+            var row = document.createElement('div');
+            row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--paper);border-radius:8px;gap:8px;';
+            row.innerHTML =
+                '<span style="font-size:1rem;">' + (app.icon || '📱') + '</span>' +
+                '<span style="flex:1;font-size:0.88rem;color:var(--ink);font-weight:500;">' + app.name + '</span>' +
+                '<span style="font-size:0.75rem;color:var(--ink-soft);background:var(--border);padding:2px 8px;border-radius:10px;">' + app.cat + '</span>' +
+                '<button onclick="editApp(' + i + ')" style="background:var(--teal-pale);color:var(--teal);border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:0.8rem;">✏️</button>' +
+                '<button onclick="deleteApp(' + i + ')" style="background:#fff0f0;color:#e53e3e;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:0.8rem;">🗑️</button>';
+            list.appendChild(row);
+        });
+    }
 
-  var empty=document.getElementById('emptyState');
-  if(visible===0&&!empty){
-    var el=document.createElement('div');el.id='emptyState';el.className='empty-state';
-    el.innerHTML='<div class="emoji">🔍</div><p>لا توجد نتائج مطابقة</p>';
-    grid.appendChild(el);
-  } else if(visible>0&&empty){empty.remove()}
-  document.getElementById('appsCount').textContent=visible+' تطبيق';
-}
+    function editApp(i) {
+        var appsData = loadApps();
+        var app = appsData[i];
+        document.getElementById('editIndex').value = i;
+        document.getElementById('fName').value  = app.name;
+        document.getElementById('fDesc').value  = app.desc;
+        document.getElementById('fUrl').value   = app.url;
+        document.getElementById('fCat').value   = app.cat;
+        document.getElementById('fAge').value   = app.age;
+        document.getElementById('fIcon').value  = app.icon || '';
+        document.getElementById('formTitle').textContent = '✏️ تعديل التطبيق';
+    }
 
-// ===================================================
-//  DIM / FOCUS
-// ===================================================
-function dimOthers(idx){
-  var grid=document.getElementById('appGrid');grid.classList.add('has-focus');
-  grid.querySelectorAll('.card').forEach(function(c){
-    if(parseInt(c.getAttribute('data-index'))===idx){c.classList.add('focused')}
-    else{c.classList.remove('focused')}
-  });
-}
-function clearDim(){
-  var grid=document.getElementById('appGrid');grid.classList.remove('has-focus');
-  grid.querySelectorAll('.card').forEach(function(c){c.classList.remove('focused')});
-}
+    function deleteApp(i) {
+        if (!confirm('هل تريدين حذف هذا التطبيق؟')) return;
+        var appsData = loadApps();
+        appsData.splice(i, 1);
+        saveApps(appsData);
+        renderAdminList();
+        renderGrid();
+    }
 
-// ===================================================
-//  FILTER
-// ===================================================
-function filterCategory(cat,btn){
-  currentCat=cat;
-  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
-  btn.classList.add('active');renderGrid();
-}
-function filterApps(){
-  currentSearch=document.getElementById('searchBar').value.trim().toLowerCase();renderGrid();
-}
+    function saveApp() {
+        var name = document.getElementById('fName').value.trim();
+        var desc = document.getElementById('fDesc').value.trim();
+        var url  = document.getElementById('fUrl').value.trim();
+        var cat  = document.getElementById('fCat').value;
+        var age  = document.getElementById('fAge').value.trim();
+        var icon = document.getElementById('fIcon').value.trim();
+        var msg  = document.getElementById('formMsg');
 
-// ===================================================
-//  WISHLIST & DONE
-// ===================================================
-function toggleFav(i,btn){
-  var favs=loadFavs();
-  if(favs[i]){delete favs[i];btn.textContent='☆';btn.classList.remove('active')}
-  else{favs[i]=true;btn.textContent='⭐';btn.classList.add('active')}
-  saveFavs(favs);
-}
-function toggleDone(i,btn){
-  var done=loadDone(),card=btn.closest('.card');
-  if(done[i]){
-    delete done[i];btn.textContent='○';btn.classList.remove('active');card.classList.remove('done');
-  } else {
-    done[i]=true;btn.textContent='✅';btn.classList.add('active');card.classList.add('done');
-  }
-  saveDone(done);
-  var badge=card.querySelector('.done-badge');if(badge)badge.style.display=done[i]?'inline-block':'none';
-  var t=card.querySelector('.card-title');if(t){t.style.textDecoration=done[i]?'line-through':'none';t.style.color=done[i]?'var(--ink-soft)':''}
-}
+        if (!name || !desc || !cat) {
+            msg.style.display = 'block';
+            msg.style.color = '#e53e3e';
+            msg.textContent = '⚠️ الاسم والوصف والتصنيف إلزامية';
+            return;
+        }
 
-// ===================================================
-//  PREVIEW
-// ===================================================
-function openPreview(i){
-  var app=loadApps()[i],c=catColors[app.cat]||{bg:'#f0f0f0',color:'#444'};
-  document.getElementById('prevIcon').textContent=app.icon||'📱';
-  document.getElementById('prevIcon').style.background=c.bg;
-  document.getElementById('prevName').textContent=app.name;
-  document.getElementById('prevCat').textContent=app.cat+' · '+app.age;
-  document.getElementById('prevAge').textContent=app.age||'';
-  document.getElementById('prevOpenFull').href=app.url;
-  document.getElementById('prevLoader').style.display='flex';
-  var f=document.getElementById('prevFrame');f.style.opacity='0';f.src=app.url;
-  document.getElementById('previewOverlay').style.display='block';
-  document.body.style.overflow='hidden';
-}
-function iframeLoaded(){
-  document.getElementById('prevLoader').style.display='none';
-  var f=document.getElementById('prevFrame');f.style.transition='opacity 0.3s';f.style.opacity='1';
-}
-function closePreview(){
-  document.getElementById('previewOverlay').style.display='none';
-  document.body.style.overflow='';
-  document.getElementById('prevFrame').src='';
-}
-document.getElementById('previewOverlay').addEventListener('click',function(e){if(e.target===this)closePreview()});
+        var appsData = loadApps();
+        var idx = parseInt(document.getElementById('editIndex').value);
+        var appObj = { name:name, desc:desc, url:url||'#', cat:cat, age:age, icon:icon||'📱' };
 
-// ===================================================
-//  STICKY
-// ===================================================
-window.addEventListener('scroll',function(){
-  var sc=document.getElementById('stickyControls');
-  sc.classList.toggle('scrolled',window.scrollY>60);
-},{passive:true});
+        if (idx >= 0) {
+            appsData[idx] = appObj;
+        } else {
+            appsData.push(appObj);
+        }
 
-// ===================================================
-//  SECRET TRIGGER — 5 taps logo
-// ===================================================
-var tapCount=0,tapTimer=null;
-document.getElementById('logoTrigger').addEventListener('click',function(){
-  tapCount++;clearTimeout(tapTimer);
-  tapTimer=setTimeout(function(){tapCount=0},2000);
-  if(tapCount>=5){tapCount=0;openAdmin()}
-});
+        saveApps(appsData);
+        renderAdminList();
+        renderGrid();
+        resetForm();
 
-// ===================================================
-//  ADMIN
-// ===================================================
-function openAdmin(){
-  document.getElementById('adminOverlay').style.display='block';
-  document.getElementById('adminLogin').style.display='block';
-  document.getElementById('adminPanel').style.display='none';
-  document.getElementById('adminPass').value='';
-  document.getElementById('passError').style.display='none';
-}
-function closeAdmin(){document.getElementById('adminOverlay').style.display='none';resetForm()}
-document.getElementById('adminOverlay').addEventListener('click',function(e){if(e.target===this)closeAdmin()});
-function checkPass(){
-  if(document.getElementById('adminPass').value===ADMIN_PASS){
-    document.getElementById('adminLogin').style.display='none';
-    document.getElementById('adminPanel').style.display='block';
-    switchTab('list',document.querySelector('.tab-btn'));renderAdminList();
-  }else{document.getElementById('passError').style.display='block'}
-}
-function switchTab(name,btn){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
-  document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
-  if(btn)btn.classList.add('active');
-  var tc=document.getElementById('tab-'+name);if(tc)tc.classList.add('active');
-}
-function renderAdminList(){
-  var apps=loadApps(),list=document.getElementById('adminAppList');
-  list.innerHTML='';
-  if(!apps.length){list.innerHTML='<p style="color:var(--ink-soft);font-size:0.83rem;text-align:center;padding:18px">لا توجد تطبيقات</p>';return}
-  apps.forEach(function(app,i){
-    var row=document.createElement('div');row.className='admin-app-row';
-    row.innerHTML='<span class="row-icon">'+(app.icon||'📱')+'</span><span class="row-name">'+esc(app.name)+'</span><span class="row-cat">'+esc(app.cat)+'</span><button class="btn-edit-row" onclick="editApp('+i+')">✏️</button><button class="btn-del-row" onclick="deleteApp('+i+')">🗑️</button>';
-    list.appendChild(row);
-  });
-}
-function editApp(i){
-  var app=loadApps()[i];
-  document.getElementById('editIndex').value=i;
-  document.getElementById('fName').value=app.name;
-  document.getElementById('fDesc').value=app.desc;
-  document.getElementById('fUrl').value=app.url||'';
-  document.getElementById('fCat').value=app.cat;
-  document.getElementById('fAge').value=app.age||'';
-  document.getElementById('fIcon').value=app.icon||'';
-  document.getElementById('formTitle').textContent='✏️ تعديل التطبيق';
-  switchTab('form',document.querySelectorAll('.tab-btn')[1]);
-}
-function deleteApp(i){
-  if(!confirm('هل تريدين حذف هذا التطبيق؟'))return;
-  var apps=loadApps();apps.splice(i,1);saveApps(apps);renderAdminList();renderGrid();
-}
-function saveApp(){
-  var name=document.getElementById('fName').value.trim();
-  var desc=document.getElementById('fDesc').value.trim();
-  var url=document.getElementById('fUrl').value.trim();
-  var cat=document.getElementById('fCat').value;
-  var age=document.getElementById('fAge').value.trim();
-  var icon=document.getElementById('fIcon').value.trim();
-  var msg=document.getElementById('formMsg');
-  if(!name||!desc||!cat){msg.style.display='block';msg.style.color='#e53e3e';msg.textContent='⚠️ الاسم والوصف والتصنيف إلزامية';return}
-  var apps=loadApps(),idx=parseInt(document.getElementById('editIndex').value);
-  var obj={name:name,desc:desc,url:url||'#',cat:cat,age:age,icon:icon||'📱'};
-  if(idx>=0){apps[idx]=obj}else{apps.push(obj)}
-  saveApps(apps);renderAdminList();renderGrid();resetForm();
-  msg.style.display='block';msg.style.color='var(--teal)';msg.textContent='✅ تم الحفظ بنجاح';
-  setTimeout(function(){msg.style.display='none'},2500);
-}
-function resetForm(){
-  ['editIndex','fName','fDesc','fUrl','fAge','fIcon'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=id==='editIndex'?'-1':''});
-  var fc=document.getElementById('fCat');if(fc)fc.value='';
-  var ft=document.getElementById('formTitle');if(ft)ft.textContent='➕ إضافة تطبيق جديد';
-  var fm=document.getElementById('formMsg');if(fm)fm.style.display='none';
-}
+        msg.style.display = 'block';
+        msg.style.color = 'var(--teal)';
+        msg.textContent = '✅ تم الحفظ بنجاح';
+        setTimeout(function() { msg.style.display = 'none'; }, 2500);
+    }
 
-// ===================================================
-//  BACKUP
-// ===================================================
-function exportData(){
-  var data={version:'2.2',exported:new Date().toISOString(),apps:loadApps()};
-  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  var a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  a.download='ranimfay-apps-'+new Date().toISOString().slice(0,10)+'.json';a.click();
-  showBackupMsg('✅ تم التصدير بنجاح','var(--teal)');
-}
-function importData(input){
-  var file=input.files[0];if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(e){
-    try{
-      var data=JSON.parse(e.target.result);
-      var apps=data.apps||data;
-      if(!Array.isArray(apps))throw new Error('تنسيق غير صحيح');
-      if(!confirm('سيتم استبدال البيانات الحالية. هل أنت متأكدة؟'))return;
-      saveApps(apps);renderAdminList();renderGrid();
-      showBackupMsg('✅ تم الاستيراد — '+apps.length+' تطبيق','var(--teal)');
-    }catch(err){showBackupMsg('❌ ملف غير صالح','#e53e3e')}
-    input.value='';
-  };
-  reader.readAsText(file);
-}
-function resetToDefault(){
-  if(!confirm('هل أنت متأكدة من استعادة الافتراضي؟'))return;
-  localStorage.removeItem(STORE_KEY);renderAdminList();renderGrid();
-  showBackupMsg('✅ تمت الاستعادة','var(--teal)');
-}
-function showBackupMsg(txt,color){
-  var m=document.getElementById('backupMsg');if(!m)return;
-  m.style.display='block';m.style.color=color;m.textContent=txt;
-  setTimeout(function(){m.style.display='none'},3000);
-}
+    function resetForm() {
+        document.getElementById('editIndex').value = '-1';
+        document.getElementById('fName').value  = '';
+        document.getElementById('fDesc').value  = '';
+        document.getElementById('fUrl').value   = '';
+        document.getElementById('fCat').value   = '';
+        document.getElementById('fAge').value   = '';
+        document.getElementById('fIcon').value  = '';
+        document.getElementById('formTitle').textContent = '➕ إضافة تطبيق جديد';
+        document.getElementById('formMsg').style.display = 'none';
+    }
 
-// ===================================================
-//  INIT
-// ===================================================
-renderGrid();
+    // ===== تهيئة أولية =====
+    renderGrid();
 </script>
 </body>
 </html>
+
+
+قم بتطوير هذا  الكود المصدري لمنصتي التعليمية (التعلم الممتع) وحوله  لنظام إدارة محتوى (CMS) متكامل. يرجى تعديل الكود الحالي وتطويره بناءً على المتطلبات التالية:
+​إدارة البيانات (CRUD & Storage):
+​الاعتماد الكامل على localStorage لتخزين بيانات التطبيقات وتحديثها لحظياً.
+​إضافة ميزة النسخ الاحتياطي (Backup/Restore): أضف داخل لوحة التحكم زراً 'تصدير البيانات' (Export) لتحميل كافة البيانات كملف JSON، وزراً 'استيراد البيانات' (Import) لرفع ملف JSON واستبدال البيانات الحالية به.
+​لوحة تحكم خفية (Secure Admin Panel):
+​يجب أن تظل لوحة التحكم مخفية تماماً ولا يظهر لها أي أثر للمستخدم العادي في واجهة التطبيق.
+​قم ببرمجة 'مشغل سري' (Secret Trigger) خاص بي للوصول إليها (مثلاً: اختصار لوحة مفاتيح أو ضغطات متتالية على منطقة معينة). لا يمكن لأي شخص آخر الوصول إليها دون معرفة هذا المشغل.
+​عند فتحها، تظهر نافذة (Modal) تحتوي على نموذج (Form) لإضافة/تعديل التطبيقات، وقائمة لإدارة (حذف/تعديل) التطبيقات الموجودة.
+​الميزات التفاعلية (UX Improvements):
+​نظام المفضلة (Wishlist): إضافة أيقونة 'نجمة' على كل بطاقة تطبيق، تسمح للمستخدم بحفظ تطبيقاته المفضلة محلياً.
+​تتبع الإنجاز (Progress Tracking): زر 'تم الإنجاز' على كل بطاقة يغير حالتها بصرياً لتوضيح إكمال المهمة.
+​التصفح الذكي: اجعل شريط التصنيفات في الأعلى يلتصق (Sticky) عند التمرير لأسفل لضمان تجربة تصفح سريعة.
+​التكامل البرمجي:
+​تأكد من أن أي تغيير يتم في لوحة التحكم ينعكس فوراً على واجهة العرض (Auto-Refresh) دون الحاجة لإعادة تحميل الصفحة.
+​حافظ على جودة ونظافة الكود (Clean Code) مع مراعاة التوافق الكامل مع الهواتف الذكية.
+​يرجى تزويدي بالكود المحدث بالكامل (HTML, CSS, JS) لدمجه في مشروعي الحالي."
